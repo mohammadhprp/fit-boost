@@ -21,6 +21,11 @@ class OTP extends Model
         'expired_at'
     ];
 
+    protected $casts = [
+        'receiver_channel' => 'integer',
+        'expired_at' => 'datetime'
+    ];
+
 
     public static function boot()
     {
