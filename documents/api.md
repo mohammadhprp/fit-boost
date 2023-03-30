@@ -27,3 +27,82 @@ users can access it.
 The base URL for your Fit Boost API application is as follows:
 
 + Local development environment: <http://localhost:8000/v1>
+
+## Authentication
+
+--------
+
+> ### ` POST ` `/api/v1/auth/otp`
+
+Request for OTP
+
+#### Request Body
+
++ receiver (string, required)
++ receiver_channel (integer, required)
+
+> Note: For receive OTP with SMS or Call `receiver_channel` most be 1
+> And for Email most me 2
+
+#### Response Format
+
+```json  
+{  
+    "request_id": "c0aeb3e5-1d25-49eb-8fbc-460e348aa78b",
+    "cannel": 1,
+}  
+```  
+
+#### Response Codes
+
++ 200 OK
++ 422 Unprocessable Content
+
+--------
+
+> ### ` POST ` `/api/v1/auth/user`
+
+Authenticate user with phone number and OTP
+
+#### Request Body
+
++ receiver (string, required)
++ password (string, required)
++ request_id (string, required)
++ device_name (string, required)
+
+#### Response Format
+
+```json  
+{  
+    "token": "1|cVvg5wh8XnZJnad1LQKABWhZGQh9pHsa6By3obrs",  
+    "action": "create"  
+}  
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
++ 403 Forbidden
++ 422 Unprocessable Content
+
+--------
+
+> ### ` GET ` `/api/v1/auth/logout`
+
+Logout user
+
+#### Response Format
+
+```json  
+{  
+    "message": "Successfully logged out"  
+}  
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
+
