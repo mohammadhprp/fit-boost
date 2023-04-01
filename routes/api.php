@@ -23,9 +23,17 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('/auth/refresh', 'refresh');
     });
 
+    /// User Routes
     Route::prefix('user')->group(function () {
-        Route::apiResource('workouts', WorkoutController::class);
-        Route::apiResource('meals', MealController::class);
+        /// User Workout Routes
+        Route::apiResource(
+            'workouts', WorkoutController::class
+        )->only(['index', 'show']);
+
+        /// User Meal Routes
+        Route::apiResource(
+            'meals', MealController::class
+        )->only(['index', 'show']);;
     });
 });
 
