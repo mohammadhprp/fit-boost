@@ -6,19 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Meal extends Model
+class UserMealItem extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'description',
-        'weekday',
-        'calories',
+        'user_meal_id'
     ];
 
-    public function user_meal_item(): BelongsTo
+    public function meal(): BelongsTo
     {
-        return $this->belongsTo(UserMealItem::class);
+        return $this->belongsTo(UserMeal::class);
     }
 }
