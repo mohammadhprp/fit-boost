@@ -15,9 +15,4 @@ class Meal extends Model
         'weekday',
         'calories',
     ];
-
-    public function plan_items()
-    {
-        return $this->morphMany(PlanItem::class, 'plan_itemable');
-    }
 }

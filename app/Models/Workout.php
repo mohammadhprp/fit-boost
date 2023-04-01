@@ -21,8 +21,4 @@ class Workout extends Model
 
     protected $casts = ['level' => WorkoutLevel::class];
 
-    public function plan_items()
-    {
-        return $this->morphMany(PlanItem::class, 'plan_itemable');
-    }
 }
