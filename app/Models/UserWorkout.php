@@ -30,7 +30,7 @@ class UserWorkout extends Model
 
     public function items(): HasMany
     {
-        return $this->hasMany(UserWorkoutItem::class, 'user_workout_item');
+        return $this->hasMany(UserWorkoutItem::class, 'user_workout_id');
     }
 
 }

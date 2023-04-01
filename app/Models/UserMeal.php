@@ -30,7 +30,7 @@ class UserMeal extends Model
 
     public function items(): HasMany
     {
-        return $this->hasMany(UserMealItem::class, 'user_meal_item');
+        return $this->hasMany(UserMealItem::class, 'user_meal_id');
     }
 
 }
