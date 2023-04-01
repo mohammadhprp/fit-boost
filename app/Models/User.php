@@ -46,4 +46,9 @@ class User extends Authenticatable
         'phone_verified_at' => 'datetime',
         'email_verified_at' => 'datetime',
     ];
+
+    public function plans()
+    {
+        return $this->hasMany(Plan::class);
+    }
 }
