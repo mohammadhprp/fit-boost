@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -46,4 +47,15 @@ class User extends Authenticatable
         'phone_verified_at' => 'datetime',
         'email_verified_at' => 'datetime',
     ];
+
+    public function workouts(): HasMany
+    {
+        return $this->hasMany(UserWorkout::class);
+    }
+
+    public function meals(): HasMany
+    {
+        return $this->hasMany(UserMeal::class);
+    }
+
 }
