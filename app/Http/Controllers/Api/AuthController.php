@@ -59,7 +59,7 @@ class AuthController extends Controller
 
         return response()->json([
             'request_id' => $otp->request_id,
-            'channel' => $request->recevicer_channel
+            'channel' => (int)$request->receiver_channel,
         ]);
     }
 
