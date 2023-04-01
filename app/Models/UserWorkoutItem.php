@@ -14,8 +14,13 @@ class UserWorkoutItem extends Model
         'user_workout_id'
     ];
 
-    public function workout(): BelongsTo
+    public function user_workout(): BelongsTo
     {
         return $this->belongsTo(UserWorkout::class);
+    }
+
+    public function workout(): BelongsTo
+    {
+        return $this->belongsTo(Workout::class);
     }
 }
