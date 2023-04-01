@@ -21,9 +21,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::controller(AuthController::class)->group(function () {
         Route::get('/auth/logout', 'logout');
         Route::get('/auth/refresh', 'refresh');
-
     });
 
+    Route::prefix('user')->group(function () {
+        Route::apiResource('workouts', WorkoutController::class);
+        Route::apiResource('meals', MealController::class);
+    });
 });
 
 // AuthenticationAction Routes
