@@ -18,6 +18,11 @@ class UserMeal extends Model
         'end_at'
     ];
 
+    protected $casts = [
+      'start_at' => 'datetime',
+      'end_at' => 'datetime',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -25,7 +30,7 @@ class UserMeal extends Model
 
     public function items(): HasMany
     {
-        return $this->hasMany(UserMealItem::class, 'user_meal_item');
+        return $this->hasMany(UserMealItem::class, 'user_meal_id');
     }
 
 }

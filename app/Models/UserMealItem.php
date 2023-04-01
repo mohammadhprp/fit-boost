@@ -14,8 +14,13 @@ class UserMealItem extends Model
         'user_meal_id'
     ];
 
-    public function meal(): BelongsTo
+    public function user_meal(): BelongsTo
     {
         return $this->belongsTo(UserMeal::class);
+    }
+
+    public function meal(): BelongsTo
+    {
+        return $this->belongsTo(Meal::class);
     }
 }
