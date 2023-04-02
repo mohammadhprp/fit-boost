@@ -34,6 +34,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::apiResource(
             'meals', MealController::class
         )->only(['index', 'show']);;
+
+        // User Profile Routes
+        Route::controller(UserController::class)->group(function () {
+            Route::get('profile', 'show');
+            Route::put('profile', 'update');
+        });
     });
 });
 
