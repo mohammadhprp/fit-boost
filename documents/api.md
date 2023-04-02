@@ -106,3 +106,69 @@ Logout user
 + 200 OK
 + 401 Unauthorized
 
+-----
+
+### User Profile
+
+
+> ### ` GET ` `/api/v1/user/profile`
+
+Get logged in user data
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "first_name": "Kuhn",
+    "last_name": "Chelsea",
+    "phone": "0912356789",
+    "email": "evalyn24@example.com",
+    "created_at": {
+        "human": "16 minutes ago",
+        "date_time": "2023-04-02 12:25:07"
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
+
+--------
+
+> ### ` PUT ` `/api/v1/user/profile`
+
+Update user data
+
+#### Request Body
+
++ first_name (string, nullable)
++ last_name (string, nullable)
++ phone (string, nullable)
++ email (string, email, nullable)
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "first_name": "Kuhn",
+    "last_name": "Chelsea",
+    "phone": "0912356789",
+    "email": "evalyn24@example.com",
+    "created_at": {
+        "human": "16 minutes ago",
+        "date_time": "2023-04-02 12:25:07"
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
++ 422 Unprocessable Content
+
+ ------
