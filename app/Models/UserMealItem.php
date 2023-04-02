@@ -11,7 +11,8 @@ class UserMealItem extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_meal_id'
+        'user_meal_id',
+        'meal_id'
     ];
 
     public function user_meal(): BelongsTo
