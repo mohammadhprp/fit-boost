@@ -11,7 +11,8 @@ class UserWorkoutItem extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_workout_id'
+        'user_workout_id',
+        'workout_id',
     ];
 
     public function user_workout(): BelongsTo
