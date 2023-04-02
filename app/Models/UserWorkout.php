@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -31,6 +32,14 @@ class UserWorkout extends Model
     public function items(): HasMany
     {
         return $this->hasMany(UserWorkoutItem::class, 'user_workout_id');
+    }
+
+
+    protected static function booted()
+    {
+        static::addGlobalScope('by_user', function (Builder $builder) {
+            $builder->where('user_id', auth()->id());
+        });
     }
 
 }
