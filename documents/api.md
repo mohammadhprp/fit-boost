@@ -110,7 +110,7 @@ Logout user
 
 ### User Profile
 
-
+------
 > ### ` GET ` `/api/v1/user/profile`
 
 Get logged in user data
@@ -172,3 +172,164 @@ Update user data
 + 422 Unprocessable Content
 
  ------
+
+
+### User Workouts
+
+-------
+
+> ### ` GET ` `/api/v1/user/workouts`
+
+Get user workout plans
+
+#### Response Format
+
+```json  
+[
+    {
+        "id": 1,
+        "title": "1st Week Workout"
+    }
+]
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
+
+ ------
+
+> ### ` GET ` `/api/v1/user/workouts/{id}`
+
+Get workout detail
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "title": "1st Week Workout",
+    "items": [
+        {
+            "workout": {
+                "id": 1,
+                "name": "Bench Press",
+                "raps": 10,
+                "sets": 3,
+                "weekday": "Monday",
+                "level": "intermediate"
+            }
+        },
+        {
+            "workout": {
+                "id": 2,
+                "name": "Squats",
+                "raps": 12,
+                "sets": 4,
+                "weekday": "Wednesday",
+                "level": "advanced"
+            }
+        }
+    ],
+    "start_at": {
+        "human": "2 days ago",
+        "date": "2023-04-02"
+    },
+    "end_at": {
+        "human": "4 days from now",
+        "date": "2023-04-09"
+    },
+    "created_at": {
+        "human": "1 day ago",
+        "date_time": "2023-04-02 12:25:07"
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
+
+ ------
+
+### User Meals
+
+-------
+
+> ### ` GET ` `/api/v1/user/meals`
+
+Get user meal plans
+
+#### Response Format
+
+```json  
+[
+    {
+        "id": 1,
+        "title": "1st Month"
+    }
+]
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
+
+ ------
+
+> ### ` GET ` `/api/v1/user/meals/{id}`
+
+Get meal detail
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "title": "1st Month",
+    "items": [
+        {
+            "meal": {
+                "id": 1,
+                "name": "Chicken Salad",
+                "description": "A healthy salad with grilled chicken, mixed greens, and avocado.",
+                "weekday": "AllDay",
+                "calories": 350,
+                "created_at": "2023-04-02T12:25:07.000000Z",
+                "updated_at": "2023-04-02T12:25:07.000000Z"
+            }
+        },
+        {
+            "meal": {
+                "id": 2,
+                "name": "Omelette",
+                "description": "A classic breakfast dish with eggs, cheese, and vegetables.",
+                "weekday": "Wednesday",
+                "calories": 300,
+                "created_at": "2023-04-02T12:25:07.000000Z",
+                "updated_at": "2023-04-02T12:25:07.000000Z"
+            }
+        }
+    ],
+    "start_at": {
+        "human": "2 days ago",
+        "date": "2023-04-02"
+    },
+    "end_at": {
+        "human": "3 weeks from now",
+        "date": "2023-05-02"
+    },
+    "created_at": {
+        "human": "1 day ago",
+        "date_time": "2023-04-02 12:25:07"
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
