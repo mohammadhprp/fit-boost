@@ -253,3 +253,83 @@ Get workout detail
 + 401 Unauthorized
 
  ------
+
+### User Meals
+
+-------
+
+> ### ` GET ` `/api/v1/user/meals`
+
+Get user meal plans
+
+#### Response Format
+
+```json  
+[
+    {
+        "id": 1,
+        "title": "1st Month"
+    }
+]
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
+
+ ------
+
+> ### ` GET ` `/api/v1/user/meals/{id}`
+
+Get meal detail
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "title": "1st Month",
+    "items": [
+        {
+            "meal": {
+                "id": 1,
+                "name": "Chicken Salad",
+                "description": "A healthy salad with grilled chicken, mixed greens, and avocado.",
+                "weekday": "AllDay",
+                "calories": 350,
+                "created_at": "2023-04-02T12:25:07.000000Z",
+                "updated_at": "2023-04-02T12:25:07.000000Z"
+            }
+        },
+        {
+            "meal": {
+                "id": 2,
+                "name": "Omelette",
+                "description": "A classic breakfast dish with eggs, cheese, and vegetables.",
+                "weekday": "Wednesday",
+                "calories": 300,
+                "created_at": "2023-04-02T12:25:07.000000Z",
+                "updated_at": "2023-04-02T12:25:07.000000Z"
+            }
+        }
+    ],
+    "start_at": {
+        "human": "2 days ago",
+        "date": "2023-04-02"
+    },
+    "end_at": {
+        "human": "3 weeks from now",
+        "date": "2023-05-02"
+    },
+    "created_at": {
+        "human": "1 day ago",
+        "date_time": "2023-04-02 12:25:07"
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
