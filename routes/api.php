@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\WorkoutProgress;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,11 +36,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             'meals', MealController::class
         )->only(['index', 'show']);;
 
-        // User Profile Routes
+        /// User Profile Routes
         Route::controller(UserController::class)->group(function () {
             Route::get('profile', 'show');
             Route::put('profile', 'update');
         });
+
+        /// User Workout Progress Routes
+        Route::apiResource('workout/progress', WorkoutProgress::class);
     });
 });
 
