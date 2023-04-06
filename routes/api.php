@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         });
 
         /// User Workout Progress Routes
-        Route::apiResource('workout/progress', WorkoutProgress::class);
+        Route::apiResource('workout/progress', WorkoutProgressController::class);
     });
 });
 
