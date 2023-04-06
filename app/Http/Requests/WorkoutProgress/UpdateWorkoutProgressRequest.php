@@ -25,19 +25,10 @@ class UpdateWorkoutProgressRequest extends FormRequest
     {
 
         return [
-            'user_workout_id' => [
-                'required',
-                Rule::exists(UserWorkout::class)->where(function ($q) {
-                    return $q->where([
-                        'user_id' => auth()->id(),
-                        'user_workout_id' => $this->user_workout_id
-                    ]);
-                }),
-            ],
             'title' => 'nullable',
             'description' => 'nullable',
-            'started_at' => 'required',
-            'ended_at' => 'required',
+            'started_at' => 'nullable',
+            'ended_at' => 'nullable',
         ];
 
     }

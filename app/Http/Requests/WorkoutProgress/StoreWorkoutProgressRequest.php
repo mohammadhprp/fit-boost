@@ -25,15 +25,7 @@ class StoreWorkoutProgressRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_workout_id' => [
-                'required',
-                Rule::exists(UserWorkout::class)->where(function ($q) {
-                    return $q->where([
-                        'user_id'=> auth()->id(),
-                        'user_workout_id' => $this->user_workout_id
-                    ]);
-                }),
-            ],
+            'user_workout_id' => 'required',
             'title' => 'nullable',
             'description' => 'nullable',
             'started_at' => 'required',
