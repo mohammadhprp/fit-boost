@@ -10,6 +10,7 @@ use App\Http\Resources\WorkoutProgress\WorkoutProgressResource;
 use App\Models\UserWorkout;
 use App\Models\WorkoutProgress;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 
 class WorkoutProgressController extends Controller
@@ -17,16 +18,16 @@ class WorkoutProgressController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): WorkoutProgressesResource
+    public function index(): AnonymousResourceCollection
     {
         $user_workout_ids = UserWorkout::select('id')->get()->pluck('id');
 
         $progresses = WorkoutProgress::select(
-            'id', 'title', 'description',
-            'started_at', 'ended_at'
-        )->whereIn($user_workout_ids)->get();
+            'id', 'user_workout_id', 'title', 'description',
+            'started_at', 'ended_at', 'created_at'
+        )->whereIn('user_workout_id', $user_workout_ids)->get();
 
-        return WorkoutProgressesResource::make($progresses);
+        return WorkoutProgressesResource::collection($progresses);
     }
 
     /**
