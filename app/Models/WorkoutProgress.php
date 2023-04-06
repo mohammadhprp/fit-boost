@@ -11,11 +11,16 @@ class WorkoutProgress extends Model
     use HasFactory;
 
     protected $fillable = [
-      'user_workout_id',
-      'title',
-      'description',
-      'started_at',
-      'ended_at',
+        'user_workout_id',
+        'title',
+        'description',
+        'started_at',
+        'ended_at',
+    ];
+
+    protected $casts = [
+        'started_at' => 'datetime',
+        'ended_at' => 'datetime',
     ];
 
 

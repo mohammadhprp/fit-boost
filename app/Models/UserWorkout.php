@@ -34,6 +34,11 @@ class UserWorkout extends Model
         return $this->hasMany(UserWorkoutItem::class, 'user_workout_id');
     }
 
+    public function progress()
+    {
+        return $this->hasMany(WorkoutProgress::class);
+    }
+
 
     protected static function booted()
     {
