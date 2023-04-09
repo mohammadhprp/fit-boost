@@ -43,27 +43,27 @@ class WorkoutProgressController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(WorkoutProgress $workoutProgress): WorkoutProgressResource
+    public function show(WorkoutProgress $progress): WorkoutProgressResource
     {
-        return WorkoutProgressResource::make($workoutProgress);
+        return WorkoutProgressResource::make($progress);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateWorkoutProgressRequest $request, WorkoutProgress $workoutProgress): WorkoutProgressResource
+    public function update(UpdateWorkoutProgressRequest $request, WorkoutProgress $progress): WorkoutProgressResource
     {
-        $workoutProgress->update($request->validated());
+        $progress->update($request->validated());
 
-        return WorkoutProgressResource::make($workoutProgress);
+        return WorkoutProgressResource::make($progress);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(WorkoutProgress $workoutProgress): Response
+    public function destroy(WorkoutProgress $progress): Response
     {
-        $workoutProgress->delete();
+        $progress->delete();
 
         return response()->noContent();
     }
