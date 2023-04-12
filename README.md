@@ -23,6 +23,10 @@ Fit Boost is a health and fitness app that helps users achieve their fitness goa
 3. Create a new database and configure the `.env` file with your database credentials.
 4. Run `php artisan migrate` to create the database tables.
 
+## Documentation
+
+Please refer to the [Fit Boost API documentation](documents/api.md) for detailed instructions on how to use the app.
+
 ## Contributing
 
 1. Fork the repository.
