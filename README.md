@@ -2,6 +2,11 @@
 
 Fit Boost is a health and fitness app that helps users achieve their fitness goals by providing personalized workout and meal plans.
 
+<p align="center">
+<img src="screenshot/preview.png" width="100%"/>
+</p>
+
+
 ## Features
 
 - Personalized dashboard
