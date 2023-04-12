@@ -278,7 +278,7 @@ Get user meal plans
 + 200 OK
 + 401 Unauthorized
 
- ------
+-------
 
 > ### ` GET ` `/api/v1/user/meals/{id}`
 
@@ -333,3 +333,157 @@ Get meal detail
 
 + 200 OK
 + 401 Unauthorized
+
+
+### User Workouts Progress
+
+-------
+
+> ### ` POST ` `/api/v1/user/workout/progress`
+
+Create user workout progress
+
+
+#### Request Body
+
+- user_workout_id (int, required)
+- title (string, nullable)
+- description (string, nullable)
+- started_at (time, nullable)
+- ended_at (time, nullable)
+
+#### Response Format
+
+```json  
+{
+    "id": 2,
+    "title": "day 2",
+    "description": "",
+    "started_at": {
+        "time": "13:30",
+        "timezone": {
+            "timezone_type": 3,
+            "timezone": "UTC"
+        }
+    },
+    "ended_at": {
+        "time": "14:35",
+        "timezone": {
+            "timezone_type": 3,
+            "timezone": "UTC"
+        }
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
++ 422 Unprocessable Content
+
+-------
+
+> ### ` GET ` `/api/v1/user/workout/progress`
+
+Get list of user workout progress 
+
+#### Response Format
+
+```json  
+[
+    {
+        "id": 1,
+        "title": "day 1"
+    },
+    {
+        "id": 2,
+        "title": "day 2"
+    }
+]
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
+
+
+-------
+
+> ### ` GET ` `/api/v1/user/workout/progress/{id}`
+
+Get user workout progress detail
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "title": "day 1",
+    "description": "",
+    "started_at": {
+        "time": "13:30",
+        "timezone": {
+            "timezone_type": 3,
+            "timezone": "UTC"
+        }
+    },
+    "ended_at": {
+        "time": "14:35",
+        "timezone": {
+            "timezone_type": 3,
+            "timezone": "UTC"
+        }
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
+
+
+-------
+
+> ### ` PUT ` `/api/v1/user/workout/progress/{id}`
+
+Update user workout progress
+
+#### Request Body
+
+- title (string, nullable)
+- description (string, nullable)
+- started_at (time, nullable)
+- ended_at (time, nullable)
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "title": "day 1",
+    "description": "65 minutes",
+    "started_at": {
+        "time": "13:30",
+        "timezone": {
+            "timezone_type": 3,
+            "timezone": "UTC"
+        }
+    },
+    "ended_at": {
+        "time": "14:35",
+        "timezone": {
+            "timezone_type": 3,
+            "timezone": "UTC"
+        }
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
++ 422 Unprocessable Content
