@@ -58,4 +58,9 @@ class User extends Authenticatable
         return $this->hasMany(UserMeal::class);
     }
 
+    public function progress(): HasMany
+    {
+        return $this->hasMany(UserProgress::class);
+    }
+
 }
