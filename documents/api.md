@@ -411,6 +411,49 @@ Get list of user workout progress
 
 -------
 
+> ### ` POST ` `/api/v1/user/workout/progress/`
+
+Create user workout progress
+
+#### Request Body
+
+- user_workout_id (fk, integer, required)
+- title (string, nullable)
+- description (string, nullable)
+- started_at (time, required)
+- ended_at (time, required)
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "title": "day 1",
+    "description": "65 minutes",
+    "started_at": {
+        "time": "13:30",
+        "timezone": {
+            "timezone_type": 3,
+            "timezone": "UTC"
+        }
+    },
+    "ended_at": {
+        "time": "14:35",
+        "timezone": {
+            "timezone_type": 3,
+            "timezone": "UTC"
+        }
+    }
+}
+```  
+
+#### Response Codes
+
++ 201 Created
++ 401 Unauthorized
+
+-------
+
 > ### ` GET ` `/api/v1/user/workout/progress/{id}`
 
 Get user workout progress detail
@@ -487,3 +530,147 @@ Update user workout progress
 + 200 OK
 + 401 Unauthorized
 + 422 Unprocessable Content
+
+------
+
+> ### ` GET ` `/api/v1/user/progress`
+
+Get list of user progress
+
+#### Response Format
+
+```json  
+[
+    {
+        "id": 2,
+        "weight": 80.4
+    },
+    {
+        "id": 1,
+        "weight": 81.5
+    }
+]
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
+
+-------
+
+> ### ` POST ` `/api/v1/user/progress/{id}`
+
+Create user progress
+
+#### Request Body
+
+- weight (double,required)
+- height (integer, required)
+- body_fat (double, nullable)
+- notes (string, nullable)
+
+#### Response Format
+
+```json  
+{
+    "id": 2,
+    "weight": 80.4,
+    "height": 184,
+    "body_fat": 23.2,
+    "notes": "Day 2/50",
+    "created_at": {
+        "human": "1 second ago",
+        "date_time": "2023-04-18 08:28:39"
+    }
+}
+```  
+
+#### Response Codes
+
++ 201 Created
++ 401 Unauthorized
++ 422 Unprocessable Content
+
+-------
+
+> ### ` GET ` `/api/v1/user/progress/{id}`
+
+Get user progress detail
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "weight": 81.5,
+    "height": 174,
+    "body_fat": 23.2,
+    "notes": "Day 1/50",
+    "created_at": {
+        "human": "1 minute ago",
+        "date_time": "2023-04-18 08:28:24"
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 403 Forbidden
++ 401 Unauthorized
+
+-------
+
+> ### ` PUT ` `/api/v1/user/progress/{id}`
+
+Update user progress
+
+#### Request Body
+
+- weight (double,nullable)
+- height (integer, nullable)
+- body_fat (double, nullable)
+- notes (string, nullable)
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "weight": 81.5,
+    "height": 184,
+    "body_fat": 23.2,
+    "notes": "Day - 1/50 - Update",
+    "created_at": {
+        "human": "5 minutes ago",
+        "date_time": "2023-04-18 08:28:24"
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
++ 403 Forbidden
++ 422 Unprocessable Content
+
+-------
+
+> ### ` DELETE ` `/api/v1/user/progress/{id}`
+
+Delete user progress
+
+
+#### Response Format
+
+```json  
+
+```  
+
+#### Response Codes
+
++ 204 No Content
++ 401 Unauthorized
++ 403 Forbidden
