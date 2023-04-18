@@ -411,6 +411,49 @@ Get list of user workout progress
 
 -------
 
+> ### ` POST ` `/api/v1/user/workout/progress/`
+
+Create user workout progress
+
+#### Request Body
+
+- user_workout_id (fk, integer, required)
+- title (string, nullable)
+- description (string, nullable)
+- started_at (time, required)
+- ended_at (time, required)
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "title": "day 1",
+    "description": "65 minutes",
+    "started_at": {
+        "time": "13:30",
+        "timezone": {
+            "timezone_type": 3,
+            "timezone": "UTC"
+        }
+    },
+    "ended_at": {
+        "time": "14:35",
+        "timezone": {
+            "timezone_type": 3,
+            "timezone": "UTC"
+        }
+    }
+}
+```  
+
+#### Response Codes
+
++ 201 Created
++ 401 Unauthorized
+
+-------
+
 > ### ` GET ` `/api/v1/user/workout/progress/{id}`
 
 Get user workout progress detail
