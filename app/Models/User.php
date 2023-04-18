@@ -63,4 +63,9 @@ class User extends Authenticatable
         return $this->hasMany(UserProgress::class);
     }
 
+    public function shares(): HasMany
+    {
+        return $this->hasMany(ShareProgress::class);
+    }
+
 }
