@@ -28,7 +28,7 @@ class WorkoutProgressTest extends TestCase
     public function test_get_user_workouts_progress(): void
     {
         $response = $this->actingAs($this->user)
-            ->getJson("/{$this->apiRoute}/user/workout/progress");
+            ->getJson("/{$this->apiRoute}/user/progress/workout");
 
         $response->assertStatus(200);
     }
@@ -46,7 +46,7 @@ class WorkoutProgressTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->postJson(
-                "/{$this->apiRoute}/user/workout/progress",
+                "/{$this->apiRoute}/user/progress/workout",
                 $data,
             );
 
@@ -60,7 +60,7 @@ class WorkoutProgressTest extends TestCase
         $this->create_workout_progress();
 
         $response = $this->actingAs($this->user)
-            ->getJson("/{$this->apiRoute}/user/workout/progress/1");
+            ->getJson("/{$this->apiRoute}/user/progress/workout/1");
 
         $response->assertStatus(200);
     }
@@ -78,7 +78,7 @@ class WorkoutProgressTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->putJson(
-                "/{$this->apiRoute}/user/workout/progress/1",
+                "/{$this->apiRoute}/user/progress/workout/1",
                 $data,
             );
 
@@ -92,7 +92,7 @@ class WorkoutProgressTest extends TestCase
         $this->create_workout_progress();
 
         $response = $this->actingAs($this->user)
-            ->deleteJson("/{$this->apiRoute}/user/workout/progress/1");
+            ->deleteJson("/{$this->apiRoute}/user/progress/workout/1");
 
         $response->assertStatus(204);
     }
