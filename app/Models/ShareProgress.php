@@ -29,7 +29,7 @@ class ShareProgress extends Model
 
     public function progress(): BelongsTo
     {
-        return $this->belongsTo(UserProgress::class);
+        return $this->belongsTo(UserProgress::class, 'user_progress_id');
     }
 
     public function visits(): HasMany
