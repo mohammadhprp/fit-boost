@@ -339,7 +339,7 @@ Get meal detail
 
 -------
 
-> ### ` POST ` `/api/v1/user/workout/progress`
+> ### ` POST ` `/api/v1/user/progress/workout`
 
 Create user workout progress
 
@@ -384,7 +384,7 @@ Create user workout progress
 
 -------
 
-> ### ` GET ` `/api/v1/user/workout/progress`
+> ### ` GET ` `/api/v1/user/progress/workout`
 
 Get list of user workout progress 
 
@@ -411,7 +411,7 @@ Get list of user workout progress
 
 -------
 
-> ### ` POST ` `/api/v1/user/workout/progress/`
+> ### ` POST ` `/api/v1/user/progress/workout/`
 
 Create user workout progress
 
@@ -454,7 +454,7 @@ Create user workout progress
 
 -------
 
-> ### ` GET ` `/api/v1/user/workout/progress/{id}`
+> ### ` GET ` `/api/v1/user/progress/workout/{id}`
 
 Get user workout progress detail
 
@@ -490,7 +490,7 @@ Get user workout progress detail
 
 -------
 
-> ### ` PUT ` `/api/v1/user/workout/progress/{id}`
+> ### ` PUT ` `/api/v1/user/progress/workout/{id}`
 
 Update user workout progress
 
