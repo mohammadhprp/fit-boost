@@ -45,9 +45,7 @@ class ShareProgressController extends Controller
         if ($share->user_id != auth()->id()) {
             abort(403, AppErrors::Forbidden);
         }
-
-        logger($share->progress);
-
+        
         return ShareProgressResource::make($share);
     }
 
