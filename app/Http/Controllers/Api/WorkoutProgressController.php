@@ -22,12 +22,12 @@ class WorkoutProgressController extends Controller
     {
         $user_workout_ids = UserWorkout::select('id')->get()->pluck('id');
 
-        $progresses = WorkoutProgress::select(
+        $workoutes = WorkoutProgress::select(
             'id', 'user_workout_id', 'title', 'description',
             'started_at', 'ended_at', 'created_at'
         )->whereIn('user_workout_id', $user_workout_ids)->get();
 
-        return WorkoutProgressesResource::collection($progresses);
+        return WorkoutProgressesResource::collection($workoutes);
     }
 
     /**
@@ -43,27 +43,27 @@ class WorkoutProgressController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(WorkoutProgress $progress): WorkoutProgressResource
+    public function show(WorkoutProgress $workout): WorkoutProgressResource
     {
-        return WorkoutProgressResource::make($progress);
+        return WorkoutProgressResource::make($workout);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateWorkoutProgressRequest $request, WorkoutProgress $progress): WorkoutProgressResource
+    public function update(UpdateWorkoutProgressRequest $request, WorkoutProgress $workout): WorkoutProgressResource
     {
-        $progress->update($request->validated());
+        $workout->update($request->validated());
 
-        return WorkoutProgressResource::make($progress);
+        return WorkoutProgressResource::make($workout);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(WorkoutProgress $progress): Response
+    public function destroy(WorkoutProgress $workout): Response
     {
-        $progress->delete();
+        $workout->delete();
 
         return response()->noContent();
     }

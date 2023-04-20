@@ -2,12 +2,13 @@
 
 namespace Tests\Feature\Api;
 
+use App\Models\ShareProgress;
 use App\Models\User;
 use App\Models\UserProgress;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class UserProgressTest extends TestCase
+class ShareProgressTest extends TestCase
 {
 
     use RefreshDatabase;
@@ -20,49 +21,48 @@ class UserProgressTest extends TestCase
         $this->user = User::factory()->create();
     }
 
-    public function test_get_user_progress()
+    public function test_get_user_share_progress()
     {
-        $this->create_progress();
+        $this->create_share();
 
         $response = $this->actingAs($this->user)
-            ->getJson("/{$this->apiRoute}/user/progress");
+            ->getJson("/{$this->apiRoute}/user/share");
 
         $response->assertStatus(200);
     }
 
-    public function test_create_user_progress(): void
+    public function test_create_user_share_progress(): void
     {
         $data = [
-            'weight' => 81.5,
-            'height' => 173,
-            'body_fat' => 23.1,
+            'user_progress_id' => $this->create_progress()->id,
+            'title' => 'Checkout my day one workout',
             'notes' => 'Day 1/50'
         ];
 
         $response = $this->actingAs($this->user)
             ->postJson(
-                "/{$this->apiRoute}/user/progress",
+                "/{$this->apiRoute}/user/share",
                 $data,
             );
 
         $response->assertStatus(201);
 
-        $this->assertDatabaseHas(UserProgress::class, $data);
+        $this->assertDatabaseHas(ShareProgress::class, $data);
     }
 
-    public function test_get_user_progress_detail(): void
+    public function test_get_user_share_progress_detail(): void
     {
-        $this->create_progress();
+        $this->create_share();
 
         $response = $this->actingAs($this->user)
-            ->getJson("/{$this->apiRoute}/user/progress/1");
+            ->getJson("/{$this->apiRoute}/user/share/1");
 
         $response->assertStatus(200);
     }
 
-    public function test_update_user_progress(): void
+    public function test_update_user_share_progress(): void
     {
-        $this->create_progress();
+        $this->create_share();
 
         $data = [
             'notes' => 'Day 1/50 - Update'
@@ -70,37 +70,35 @@ class UserProgressTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->putJson(
-                "/{$this->apiRoute}/user/progress/1",
+                "/{$this->apiRoute}/user/share/1",
                 $data,
             );
 
         $response->assertStatus(200);
 
-        $this->assertDatabaseHas(UserProgress::class, $data);
+        $this->assertDatabaseHas(ShareProgress::class, $data);
     }
 
-    public function test_delete_user_workout_progress()
+    public function test_delete_user_share_progress()
     {
-        $this->create_progress();
+        $this->create_share();
 
         $response = $this->actingAs($this->user)
-            ->deleteJson("/{$this->apiRoute}/user/progress/1");
+            ->deleteJson("/{$this->apiRoute}/user/share/1");
 
         $response->assertStatus(204);
     }
 
-    public function test_user_can_not_create_progress_with_invalid_data(): void
+    public function test_user_can_not_create_share_progress_with_invalid_data(): void
     {
         $data = [
-            'weight' => 'invalid weight',
-            'height' => 173,
-            'body_fat' => 23.1,
+            'title' => 'Checkout my day one workout',
             'notes' => 'Day 1/50'
         ];
 
         $response = $this->actingAs($this->user)
             ->postJson(
-                "/{$this->apiRoute}/user/progress",
+                "/{$this->apiRoute}/user/share",
                 $data,
             );
 
@@ -108,16 +106,28 @@ class UserProgressTest extends TestCase
     }
 
 
-    public function test_user_can_not_get_progress_not_owned()
+    public function test_user_can_not_get_share_progress_not_owned()
     {
-        $progress = $this->create_progress();
+        $share = $this->create_share();
 
         $another_user = User::factory()->create();
 
         $response = $this->actingAs($another_user)
-            ->getJson("/{$this->apiRoute}/user/progress/{$progress->id}");
+            ->getJson("/{$this->apiRoute}/user/share/{$share->id}");
 
         $response->assertStatus(404);
+    }
+
+    private function create_share(): ShareProgress
+    {
+        $data = [
+            'user_id' => $this->user->id,
+            'user_progress_id' => $this->create_progress()->id,
+            'title' => 'Checkout my day one workout',
+            'notes' => 'Day 1/50'
+        ];
+
+        return ShareProgress::create($data);
     }
 
     private function create_progress(): UserProgress
