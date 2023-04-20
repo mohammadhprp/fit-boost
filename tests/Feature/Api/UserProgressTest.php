@@ -89,7 +89,38 @@ class UserProgressTest extends TestCase
         $response->assertStatus(204);
     }
 
-    private function create_progress(): array
+    public function test_user_can_not_create_progress_with_invalid_data(): void
+    {
+        $data = [
+            'weight' => 'invalid weight',
+            'height' => 173,
+            'body_fat' => 23.1,
+            'notes' => 'Day 1/50'
+        ];
+
+        $response = $this->actingAs($this->user)
+            ->postJson(
+                "/{$this->apiRoute}/user/progress",
+                $data,
+            );
+
+        $response->assertStatus(422);
+    }
+
+
+    public function test_user_can_not_get_progress_not_owned()
+    {
+        $progress = $this->create_progress();
+
+        $another_user = User::factory()->create();
+
+        $response = $this->actingAs($another_user)
+            ->getJson("/{$this->apiRoute}/user/progress/{$progress->id}");
+
+        $response->assertStatus(404);
+    }
+
+    private function create_progress(): UserProgress
     {
         $data = [
             'user_id' => $this->user->id,
@@ -99,8 +130,6 @@ class UserProgressTest extends TestCase
             'notes' => 'Day 1/50'
         ];
 
-        UserProgress::create($data);
-
-        return $data;
+        return UserProgress::create($data);
     }
 }
