@@ -49,7 +49,7 @@ Request for OTP
 ```json  
 {  
     "request_id": "c0aeb3e5-1d25-49eb-8fbc-460e348aa78b",
-    "cannel": 1,
+    "channel": 1
 }  
 ```  
 
