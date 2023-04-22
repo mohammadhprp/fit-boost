@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\WorkoutProgress;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +33,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         /// User Meal Routes
         Route::apiResource(
             'meals', MealController::class
-        )->only(['index', 'show']);;
+        )->only(['index', 'show']);
 
         /// User Profile Routes
         Route::controller(UserController::class)->group(function () {
