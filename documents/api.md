@@ -531,6 +531,9 @@ Update user workout progress
 + 401 Unauthorized
 + 422 Unprocessable Content
 
+
+### User Progress
+
 ------
 
 > ### ` GET ` `/api/v1/user/progress`
@@ -674,3 +677,184 @@ Delete user progress
 + 204 No Content
 + 401 Unauthorized
 + 403 Forbidden
+
+------ 
+
+### Share Progress
+
+------
+
+> ### ` GET ` `/api/v1/user/share`
+
+Get list of user share progress
+
+#### Response Format
+
+```json  
+[
+    {
+        "id": 2,
+        "title": "Day 2 - progress"
+    },
+    {
+        "id": 1,
+        "title": "Day 1 - progress"
+    }
+]
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
+
+-------
+
+> ### ` POST ` `/api/v1/user/share/{id}`
+
+Create user share progress
+
+#### Request Body
+
+- user_progress_id (FK, integer, required)
+- title (string, required)
+- notes (string, nullable)
+
+#### Response Format
+
+```json  
+{
+    "id": 3,
+    "title": "Day 3 - progress",
+    "user_progress": {
+        "id": 4,
+        "weight": 80.4,
+        "height": 184,
+        "body_fat": 23.2,
+        "notes": "Day 1/50",
+        "created_at": {
+            "human": "3 days ago",
+            "date_time": "2023-04-18 08:28:39"
+        }
+    },
+    "url": "http://localhost/c6uQkI",
+    "notes": "Day 3/50",
+    "visits_count": 0,
+    "created_at": {
+        "human": "1 second ago",
+        "date_time": "2023-04-22 07:52:41"
+    }
+}
+```  
+
+#### Response Codes
+
++ 201 Created
++ 401 Unauthorized
++ 422 Unprocessable Content
+
+-------
+
+> ### ` GET ` `/api/v1/user/share/{id}`
+
+Get user share progress detail
+
+#### Response Format
+
+```json  
+{
+    "id": 3,
+    "title": "Day 3 - progress",
+    "user_progress": {
+        "id": 4,
+        "weight": 80.4,
+        "height": 184,
+        "body_fat": 23.2,
+        "notes": "Day 1/50",
+        "created_at": {
+            "human": "3 days ago",
+            "date_time": "2023-04-18 08:28:39"
+        }
+    },
+    "url": "http://localhost/c6uQkI",
+    "notes": "Day 3/50",
+    "visits_count": 1,
+    "created_at": {
+        "human": "1 second ago",
+        "date_time": "2023-04-22 07:52:41"
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 403 Forbidden
++ 404 Not Found
++ 401 Unauthorized
+
+-------
+
+> ### ` PUT ` `/api/v1/user/share/{id}`
+
+Update user share progress
+
+#### Request Body
+
+- title (string, nullable)
+- notes (string, nullable)
+
+#### Response Format
+
+```json  
+{
+    "id": 3,
+    "title": "Day 3 - progress - updated",
+    "user_progress": {
+        "id": 4,
+        "weight": 80.4,
+        "height": 184,
+        "body_fat": 23.2,
+        "notes": "Day 1/50",
+        "created_at": {
+            "human": "3 days ago",
+            "date_time": "2023-04-18 08:28:39"
+        }
+    },
+    "url": "http://localhost/c6uQkI",
+    "notes": "Day 3/50",
+    "visits_count": 0,
+    "created_at": {
+        "human": "1 minute ago",
+        "date_time": "2023-04-22 07:52:41"
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
++ 403 Forbidden
++ 404 Not Found
++ 422 Unprocessable Content
+
+-------
+
+> ### ` DELETE ` `/api/v1/user/share/{id}`
+
+Delete user share progress
+
+
+#### Response Format
+
+```json  
+
+```  
+
+#### Response Codes
+
++ 204 No Content
++ 401 Unauthorized
++ 403 Forbidden
++ 404 Not Found
