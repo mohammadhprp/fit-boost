@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class UserWorkout extends Model
 {
@@ -34,18 +35,18 @@ class UserWorkout extends Model
         return $this->hasMany(UserWorkoutItem::class, 'user_workout_id');
     }
 
-    public function progress()
+    public function progress(): HasMany
     {
         return $this->hasMany(WorkoutProgress::class);
     }
 
-    public function reminders()
+    public function reminders(): MorphMany
     {
         return $this->morphMany(Reminder::class, 'reminderable');
     }
 
 
-    protected static function booted()
+    protected static function booted(): void
     {
         static::addGlobalScope('by_user', function (Builder $builder) {
             $builder->where('user_id', auth()->id());

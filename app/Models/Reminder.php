@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Reminder extends Model
 {
@@ -19,7 +20,7 @@ class Reminder extends Model
         'remind_at' => 'datetime'
     ];
 
-    public function reminderable()
+    public function reminderable(): MorphTo
     {
         return $this->morphTo();
     }
