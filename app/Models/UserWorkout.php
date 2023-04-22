@@ -39,6 +39,11 @@ class UserWorkout extends Model
         return $this->hasMany(WorkoutProgress::class);
     }
 
+    public function reminders()
+    {
+        return $this->morphMany(Reminder::class, 'reminderable');
+    }
+
 
     protected static function booted()
     {
