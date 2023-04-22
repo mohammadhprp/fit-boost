@@ -69,4 +69,10 @@ class User extends Authenticatable
         return $this->hasMany(ShareProgress::class);
     }
 
+
+    public function notifications(): MorphMany
+    {
+        return $this->morphMany(Notification::class, 'notificationable');
+    }
+
 }
