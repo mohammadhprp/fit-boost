@@ -36,7 +36,7 @@ class UserProgress extends Model
         return $this->hasMany(ShareProgress::class);
     }
 
-    protected static function booted()
+    protected static function booted(): void
     {
         static::addGlobalScope('by_user', function (Builder $builder) {
             $builder->where('user_id', auth()->id());
