@@ -11,13 +11,16 @@ class Reminder extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'title',
         'description',
-        'remind_at'
+        'remind_at',
+        'is_completed'
     ];
 
     protected $casts = [
-        'remind_at' => 'datetime'
+        'remind_at' => 'datetime',
+        'is_completed' => 'bool'
     ];
 
     public function reminderable(): MorphTo
