@@ -49,6 +49,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
         /// User Share Progress Routes
         Route::apiResource('share', ShareProgressController::class);
+
+        Route::apiResource('userWorkout.reminder', UserWorkoutReminderController::class);
     });
 });
 
