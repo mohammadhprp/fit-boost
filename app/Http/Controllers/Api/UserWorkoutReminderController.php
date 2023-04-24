@@ -12,6 +12,7 @@ use App\Models\Reminder;
 use App\Models\UserWorkout;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class UserWorkoutReminderController extends Controller
 {
@@ -43,7 +44,7 @@ class UserWorkoutReminderController extends Controller
     public function show(UserWorkout $userWorkout, Reminder $reminder): UserWorkoutReminderResource
     {
         if ($userWorkout->user->id != auth()->id()) {
-            abort(403, AppErrors::Forbidden);
+            abort(ResponseAlias::HTTP_FORBIDDEN, AppErrors::Forbidden);
         }
 
         return UserWorkoutReminderResource::make($reminder);
@@ -58,7 +59,7 @@ class UserWorkoutReminderController extends Controller
         Reminder                         $reminder): UserWorkoutReminderResource
     {
         if ($userWorkout->user->id != auth()->id()) {
-            abort(403, AppErrors::Forbidden);
+            abort(ResponseAlias::HTTP_FORBIDDEN, AppErrors::Forbidden);
         }
 
         $reminder->update($request->validated());
@@ -72,7 +73,7 @@ class UserWorkoutReminderController extends Controller
     public function destroy(UserWorkout $userWorkout, Reminder $reminder): Response
     {
         if ($userWorkout->user->id != auth()->id()) {
-            abort(403, AppErrors::Forbidden);
+            abort(ResponseAlias::HTTP_FORBIDDEN, AppErrors::Forbidden);
         }
 
         $reminder->delete();
