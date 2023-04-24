@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->timestamp('notify_at');
-            $table->timestamp('read_at');
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
     }
