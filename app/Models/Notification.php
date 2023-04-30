@@ -13,7 +13,8 @@ class Notification extends Model
     protected $fillable = [
         'title',
         'description',
-        'remind_at'
+        'notify_at',
+        'read_at'
     ];
 
     protected $casts = [

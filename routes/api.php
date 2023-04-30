@@ -50,7 +50,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         /// User Share Progress Routes
         Route::apiResource('share', ShareProgressController::class);
 
+        /// User Workout Reminder Routes
         Route::apiResource('userWorkout.reminder', UserWorkoutReminderController::class);
+
+        /// User Notification Routes
+        Route::apiResource('notifications', UserNotificationController::class);
     });
 });
 
