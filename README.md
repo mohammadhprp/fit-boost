@@ -4,6 +4,8 @@
 <img src="screenshot/preview.png" width="100%"/>
 </p>
 
+![example workflow](https://github.com/mohammadhprp/fit-boost/actions/workflows/laravel.yml/badge.svg)
+
 Fit Boost is a health and fitness app that helps users achieve their fitness goals by providing personalized workout and meal plans.
 
 
