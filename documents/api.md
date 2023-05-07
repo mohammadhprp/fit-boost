@@ -710,7 +710,7 @@ Get list of user share progress
 
 -------
 
-> ### ` POST ` `/api/v1/user/share/{id}`
+> ### ` POST ` `/api/v1/user/share`
 
 Create user share progress
 
@@ -845,6 +845,159 @@ Update user share progress
 
 Delete user share progress
 
+
+#### Response Format
+
+```json  
+
+```  
+
+#### Response Codes
+
++ 204 No Content
++ 401 Unauthorized
++ 403 Forbidden
++ 404 Not Found
+
+
+### User Workout Reminders
+
+------
+
+> ### ` GET ` `/api/v1/user/userWorkout/{workout_id}/reminder`
+
+Get list of user workout reminders
+
+#### Response Format
+
+```json  
+[
+    {
+        "id": 1,
+        "title": "Today workout #2"
+    }
+]
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
+
+-------
+
+> ### ` POST ` `/api/v1/user/userWorkout/{workout_id}/reminder`
+
+Create user workout reminder
+
+#### Request Body
+
+- title (string, required)
+- description (string, nullable)
+- remind_at (date, required)
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "title": "Today workout #2",
+    "description": "This is descriptin",
+    "remind_at": {
+        "human": "1 week ago",
+        "date_time": "2023-04-23 17:35:00"
+    },
+    "is_completed": false,
+    "created_at": {
+        "human": "1 second ago",
+        "date_time": "2023-05-07 08:03:41"
+    }
+}
+```  
+
+#### Response Codes
+
++ 201 Created
++ 401 Unauthorized
++ 422 Unprocessable Content
+
+-------
+
+> ### ` GET ` `/api/v1/user/userWorkout/{workout_id}/reminder/{id}`
+
+Get user workout reminder detail
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "title": "Today workout #2",
+    "description": "This is descriptin",
+    "remind_at": {
+        "human": "1 week ago",
+        "date_time": "2023-04-23 17:35:00"
+    },
+    "is_completed": false,
+    "created_at": {
+        "human": "2 minutes ago",
+        "date_time": "2023-05-07 08:03:41"
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 403 Forbidden
++ 404 Not Found
++ 401 Unauthorized
+
+-------
+
+> ### ` PUT ` `/api/v1/user/userWorkout/{workout_id}/reminder/{id}`
+
+Update user workout reminder
+
+#### Request Body
+
+- title (string, nullable)
+- description (string, nullable)
+- remind_at (date, nullable)
+- is_completed (boolean, nullable)
+
+#### Response Format
+
+```json  
+{
+    "id": 1,
+    "title": "Today workout #2",
+    "description": "This is descriptin",
+    "remind_at": {
+        "human": "1 week ago",
+        "date_time": "2023-04-23 17:35:00"
+    },
+    "is_completed": true,
+    "created_at": {
+        "human": "4 minutes ago",
+        "date_time": "2023-05-07 08:03:41"
+    }
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
++ 403 Forbidden
++ 404 Not Found
++ 422 Unprocessable Content
+
+-------
+
+> ### ` DELETE ` `/api/v1/user/userWorkout/{workout_id}/reminder/{id}`
+
+Delete user workout reminder
 
 #### Response Format
 
