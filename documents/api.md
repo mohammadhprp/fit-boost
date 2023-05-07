@@ -1011,3 +1011,130 @@ Delete user workout reminder
 + 401 Unauthorized
 + 403 Forbidden
 + 404 Not Found
+
+### User Notifications
+
+------
+
+> ### ` GET ` `/api/v1/user/notifications`
+
+Get list of user notifications
+
+#### Response Format
+
+```json  
+[
+    {
+        "id": 2,
+        "title": "Workout time"
+    }
+]
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
+
+-------
+
+> ### ` POST ` `/api/v1/user/notifications`
+
+Create user notifications
+
+#### Request Body
+
+- title (string, required)
+- description (string, nullable)
+- notify_at (date, required)
+
+#### Response Format
+
+```json  
+{
+    "id": 2,
+    "title": "Workout time",
+    "description": "This is description",
+    "notify_at": "2023-04-23T17:35:00.000000Z"
+}
+```  
+
+#### Response Codes
+
++ 201 Created
++ 401 Unauthorized
++ 422 Unprocessable Content
+
+-------
+
+> ### ` GET ` `/api/v1/user/notifications/{id}`
+
+Get user notifications detail
+
+#### Response Format
+
+```json  
+{
+    "id": 2,
+    "title": "Workout time",
+    "description": "This is description",
+    "notify_at": "2023-04-23T17:35:00.000000Z"
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 403 Forbidden
++ 404 Not Found
++ 401 Unauthorized
+
+-------
+
+> ### ` PUT ` `/api/v1/user/notifications/{id}`
+
+Update user notifications
+
+#### Request Body
+
+- title (string, nullable)
+- description (string, nullable)
+- notify_at (date, nullable)
+
+#### Response Format
+
+```json  
+{
+    "id": 2,
+    "title": "Today workout #2",
+    "description": "TODO",
+    "notify_at": "2023-04-23T17:35:00.000000Z"
+}
+```  
+
+#### Response Codes
+
++ 200 OK
++ 401 Unauthorized
++ 403 Forbidden
++ 404 Not Found
++ 422 Unprocessable Content
+
+-------
+
+> ### ` DELETE ` `/api/v1/user/notifications/{id}`
+
+Delete user notifications
+
+#### Response Format
+
+```json  
+
+```  
+
+#### Response Codes
+
++ 204 No Content
++ 401 Unauthorized
++ 403 Forbidden
++ 404 Not Found
